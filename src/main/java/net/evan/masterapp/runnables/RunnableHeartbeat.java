@@ -15,7 +15,7 @@ public class RunnableHeartbeat implements Runnable {
     @Override
     public void run() {
         app.getEntitiesManager().getServerEntityList().forEach(s -> {
-            if (s.getData().getStatus() != ServerDataEntity.Status.STARTING && s.getData().getStatus() != ServerDataEntity.Status.REBOOTING && s.getData().getStatus() != ServerDataEntity.Status.NOT_RESPONDING) {
+            if (s.getData().getStatus() != ServerDataEntity.Status.STARTING && s.getData().getStatus() != ServerDataEntity.Status.REBOOTING && s.getData().getStatus() != ServerDataEntity.Status.NOT_RESPONDING && s.getData().getStatus() != ServerDataEntity.Status.FINISHED) {
                 new PacketHeartbeat(app).invoke(s.getName());
             }
         });
